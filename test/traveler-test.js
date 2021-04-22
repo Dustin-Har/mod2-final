@@ -150,20 +150,20 @@ describe('Traveler', () => {
   it('should take in traveler information as an argument', () => {
     expect(traveler.id).to.equal(2);
     expect(traveler.name).to.equal('Rachael Vaughten');
-    expect(traveler.type).to.equal('trill-seeker');
+    expect(traveler.type).to.equal('thrill-seeker');
   });
 
-  it('should keep track of all trips traveler has and trip information', () => {
-    expect(traveler.trips).to.equal([{
-      "id": 1,
-      "userID": 2,
-      "destinationID": 4,
-      "travelers": 1,
-      "date": "2019/09/16",
-      "duration": 8,
-      "status": "approved",
-      "suggestedActivities": [],
-      "tripInformation": {
+  it.only('should keep track of all trips traveler has and trip information', () => {
+    expect(traveler.trips).to.deep.equal([{
+    "id": 1,
+    "userID": 2,
+    "destinationID": 4,
+    "travelers": 1,
+    "date": "2019/09/16",
+    "duration": 8,
+    "status": "approved",
+    "suggestedActivities": [],
+    "destinationInfo": {
         "id": 4,
         "destination": "Cartagena, Colombia",
         "estimatedLodgingCostPerDay": 65,
@@ -172,21 +172,21 @@ describe('Traveler', () => {
         "alt": "boats at a dock during the day time"
       }
     }, {
-      "id": 4,
-      "userID": 4,
-      "destinationID": 1,
-      "travelers": 2,
-      "date": "2020/02/25",
-      "duration": 10,
+      "id": 5,
+      "userID": 2,
+      "destinationID": 3,
+      "travelers": 3,
+      "date": "2020/04/30",
+      "duration": 18,
       "status": "approved",
       "suggestedActivities": [],
-      "tripInformation": {
-        "id": 1,
-        "destination": "Lima, Peru",
-        "estimatedLodgingCostPerDay": 70,
-        "estimatedFlightCostPerPerson": 400,
-        "image": "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
-        "alt": "overview of city buildings with a clear sky"
+      "destinationInfo": {
+        "id": 3,
+        "destination": "Sydney, Austrailia",
+        "estimatedLodgingCostPerDay": 130,
+        "estimatedFlightCostPerPerson": 950,
+        "image": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "opera house and city buildings on the water with boats"
       }
     }, {
       "id": 6,
@@ -197,7 +197,7 @@ describe('Traveler', () => {
       "duration": 9,
       "status": "approved",
       "suggestedActivities": [],
-      "tripInformation": {
+      "destinationInfo": {
         "id": 6,
         "destination": "Jakarta, Indonesia",
         "estimatedLodgingCostPerDay": 70,
@@ -209,11 +209,11 @@ describe('Traveler', () => {
   });
 
   it('should calculate how much each trip is with a 10% fee for travel agent', () => {
-    expect(traveler.calculateTripPrice(traveler.trips[0]).to.equal(870));
-    expect(traveler.calculateTripPrice(traveler.trips[2]).to.equal(3300));
+    expect(traveler.calculateTripPrice(traveler.trips[0]).to.equal(957));
+    expect(traveler.calculateTripPrice(traveler.trips[2]).to.equal(3630));
   });
 
   it('should calculate total cost of all trips', () => {
-    expect(traveler.totalCost().to.equal(5670));
+    expect(traveler.totalCost().to.equal(6237));
   });
 });
