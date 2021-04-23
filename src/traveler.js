@@ -7,14 +7,22 @@ class Traveler {
   }
   
   getTripInfo(tripInfo, destinationData) {
-    let allTripInfo = tripInfo.filter(trip => trip.userID === this.id);
-    allTripInfo.forEach(trip => {
+    const filteredTripInfo = tripInfo.filter(trip => trip.userID === this.id);
+    const tripsWithDestinations = filteredTripInfo.map(trip => {
       const destinationIndex = destinationData.findIndex(destination => destination.id === trip.destinationID);
       trip.destinationInfo = destinationData[destinationIndex];
+      return trip
     });
-    return allTripInfo;
+    return tripsWithDestinations;
   }
 
+    calculateTripPrice(trip) {
+    const agentFee = 1.1;
+    let flyingCost = (trip.travelers * trip.destinationInfo.estimatedFlightCostPerPerson);
+    let dailyCost = (trip.duration * trip.destinationInfo.estimatedLodgingCostPerDay);
+    let tripPrice = ((flyingCost + dailyCost) * agentFee);
+    return tripPrice.toFixed();
+  }
 }
 
 export default Traveler;

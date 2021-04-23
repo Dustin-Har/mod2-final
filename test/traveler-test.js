@@ -153,7 +153,7 @@ describe('Traveler', () => {
     expect(traveler.type).to.equal('thrill-seeker');
   });
 
-  it.only('should keep track of all trips traveler has and trip information', () => {
+  it('should keep track of all trips traveler has and trip information', () => {
     expect(traveler.trips).to.deep.equal([{
     "id": 1,
     "userID": 2,
@@ -209,11 +209,11 @@ describe('Traveler', () => {
   });
 
   it('should calculate how much each trip is with a 10% fee for travel agent', () => {
-    expect(traveler.calculateTripPrice(traveler.trips[0]).to.equal(957));
-    expect(traveler.calculateTripPrice(traveler.trips[2]).to.equal(3630));
+    expect(traveler.calculateTripPrice(traveler.trips[0])).to.equal('957');
+    expect(traveler.calculateTripPrice(traveler.trips[2])).to.equal('3630');
   });
 
   it('should calculate total cost of all trips', () => {
-    expect(traveler.totalCost().to.equal(6237));
+    expect(traveler.totalCost().to.equal(6237.00));
   });
 });
