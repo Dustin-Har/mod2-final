@@ -9,7 +9,9 @@ export const travelApi = () => {
 
   const tripsApi = fetch('http://localhost:3001/api/v1/trips')
   .then(response => response.json())
-  .catch(err => displayErrMessage(err))
+  .catch(err => displayErrMessage(err));
 
-
+  const destinationApi = fetch('http://localhost:3001/api/v1/destinations')
+  .then(response => response.json())
+  .catch(err => displayErrMessage(err));
 }
