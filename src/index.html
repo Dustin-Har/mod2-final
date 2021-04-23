@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Travel Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <header>
+      <a href="/">Travel Tracker</a>
+      <div>
+        <i class="far fa-user-circle user-icon"></i>
+        <span id="userName">Username</span>
+      </div>
+    </header>
+    <main>
+      <form class="new-trip-form" id="newTripForm">
+        <label for="destination">Where to?</label><br>
+        <input type="text" id="whereTo" name="destination"><br>
+      </form>
+      <div class="tabs">
+        <button class="upcoming-trips active">Upcoming Trips</button>
+        <button class="pending-trips">Pending Trips</button>
+        <button class="past-trips">Past Trips</button>
+        <button class="present-trips">Present Trips</button>
+      </div>
+      <div id="tabBox">
+      </div>
+    </main>
+    
 
     <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
 

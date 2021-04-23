@@ -3,24 +3,24 @@ class Traveler {
     this.id = travelerInfo.id;
     this.name = travelerInfo.name;
     this.type = travelerInfo.travelerType;
-    this.trips = this.getTripInfo(tripInfo, destinationInfo);
+    this.trips = new TripData(tripInfo);
+    this.destination = destinationInfo;
+    this.init();
+  }
+
+  init() {
+    this.trips.setDestinations(this.id, this.destinations);
   }
   
-  getTripInfo(tripInfo, destinationData) {
-    const filteredTripInfo = tripInfo.filter(trip => trip.userID === this.id);
-    const tripsWithDestinations = filteredTripInfo.map(trip => {
-      const destinationIndex = destinationData.findIndex(destination => destination.id === trip.destinationID);
-      trip.destinationInfo = destinationData[destinationIndex];
-      return trip
-    });
-    return tripsWithDestinations;
+  getTripInfo() {
+    return this.trips.getTripInfo();
   }
 
     calculateTripPrice(trip) {
     const agentFee = 1.1;
-    let flyingCost = (trip.travelers * trip.destinationInfo.estimatedFlightCostPerPerson);
-    let dailyCost = (trip.duration * trip.destinationInfo.estimatedLodgingCostPerDay);
-    let tripPrice = ((flyingCost + dailyCost) * agentFee);
+    const flyingCost = (trip.travelers * trip.destinationInfo.estimatedFlightCostPerPerson);
+    const dailyCost = (trip.duration * trip.destinationInfo.estimatedLodgingCostPerDay);
+    const tripPrice = ((flyingCost + dailyCost) * agentFee);
     return Math.round(tripPrice);
   }
 
