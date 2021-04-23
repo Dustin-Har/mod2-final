@@ -7,5 +7,9 @@ export const travelApi = () => {
   .then(response => response.json())
   .catch(err => displayErrMessage(err));
 
+  const tripsApi = fetch('http://localhost:3001/api/v1/trips')
+  .then(response => response.json())
+  .catch(err => displayErrMessage(err))
+
 
 }
