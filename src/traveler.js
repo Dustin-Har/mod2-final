@@ -21,7 +21,12 @@ class Traveler {
     let flyingCost = (trip.travelers * trip.destinationInfo.estimatedFlightCostPerPerson);
     let dailyCost = (trip.duration * trip.destinationInfo.estimatedLodgingCostPerDay);
     let tripPrice = ((flyingCost + dailyCost) * agentFee);
-    return tripPrice.toFixed();
+    return Math.round(tripPrice);
+  }
+
+  totalCost() {
+    const totalTripCost = this.trips.reduce((total, trip) => total + (this.calculateTripPrice(trip)),0);
+    return totalTripCost;
   }
 }
 

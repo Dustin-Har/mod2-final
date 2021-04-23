@@ -209,11 +209,11 @@ describe('Traveler', () => {
   });
 
   it('should calculate how much each trip is with a 10% fee for travel agent', () => {
-    expect(traveler.calculateTripPrice(traveler.trips[0])).to.equal('957');
-    expect(traveler.calculateTripPrice(traveler.trips[2])).to.equal('3630');
+    expect(traveler.calculateTripPrice(traveler.trips[0])).to.equal(957);
+    expect(traveler.calculateTripPrice(traveler.trips[2])).to.equal(3630);
   });
 
   it('should calculate total cost of all trips', () => {
-    expect(traveler.totalCost().to.equal(6237.00));
+    expect(traveler.totalCost()).to.equal(10296);
   });
 });
