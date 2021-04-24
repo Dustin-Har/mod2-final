@@ -80,6 +80,6 @@ describe('Traveler', () => {
   });
 
   it('Should calculate total cost of all trips', () => {
-    expect(traveler.getTotalTripsCost()).to.equal(10296);
+    expect(traveler.getTotalTripCost()).to.equal(10296);
   });
 });

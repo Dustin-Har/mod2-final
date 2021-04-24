@@ -10,14 +10,14 @@ export default class Traveler {
 
   init() {
     this.trips.setDestinations(this.id);
-    // console.log('in traveler class',this.trips.tripsArray)
   }
   
   getTripInfo() {
     return this.trips.getTripInfo();
   }
   
-  getTotalTripsCost() {
-    return this.trips.getTotalCost() 
-  } 
+  getTotalTripCost() {
+    const totalTripCost = this.trips.tripsArray.reduce((total, trip) => total + (this.trips.calculateTripPrice(trip)),0);
+    return totalTripCost;
+  }
 }

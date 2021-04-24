@@ -73,12 +73,6 @@ describe('Trips', () => {
         }
     }]);
   });
-
-  
-  it('Should calculate how much each trip is with a 10% fee for travel agent', () => {
-    expect(traveler.trips.calculateTripPrice(traveler.trips.tripsArray[0])).to.equal(957);
-    expect(traveler.trips.calculateTripPrice(traveler.trips.tripsArray[2])).to.equal(3630);
-  });
 })
 
 it.skip('Should calculate ', () => {
