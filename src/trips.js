@@ -1,5 +1,3 @@
-import { getTrips } from "./apiData/getData";
-
 export default class Trips {
   constructor(tripData, destinationInfo) {
     this.tripsArray = tripData;
