@@ -6,7 +6,7 @@
   </head>
   <body>
     <header>
-      <a href="/">Travel Tracker</a>
+      <a href="/" class="logo">Travel Tracker</a>
       <div>
         <i class="far fa-user-circle user-icon"></i>
         <span id="userName">Username</span>
@@ -16,6 +16,14 @@
       <form class="new-trip-form" id="newTripForm">
         <label for="destination">Where to?</label><br>
         <input type="text" id="whereTo" name="destination"><br>
+        <div>
+          <div>
+            <i class="far fa-calendar-alt"></i>
+          </div>
+          <input type="text" name="date" id="startDate"></input>
+          <i class="fas fa-angle-right"></i>
+          <input type="text" name="date" id="endDate"></input>
+        </div>
       </form>
       <div class="tabs">
         <button class="upcoming-trips active">Upcoming Trips</button>
@@ -23,7 +31,7 @@
         <button class="past-trips">Past Trips</button>
         <button class="present-trips">Present Trips</button>
       </div>
-      <div id="tabBox">
+      <div class="tabBox" id="tabBox">
       </div>
     </main>
     
