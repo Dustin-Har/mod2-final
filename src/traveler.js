@@ -4,13 +4,13 @@ export default class Traveler {
     this.id = travelerInfo.id;
     this.name = travelerInfo.name;
     this.type = travelerInfo.travelerType;
-    this.trips = new Trips(tripInfo);
-    this.destinations = destinationInfo;
+    this.trips = new Trips(tripInfo, destinationInfo);
     this.init();
   }
 
   init() {
-    this.trips.setDestinations(this.id, this.destinations);
+    this.trips.setDestinations(this.id);
+    // console.log('in traveler class',this.trips.tripsArray)
   }
   
   getTripInfo() {

@@ -1,30 +1,25 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import Traveler from "../src/Traveler"
-import Trips from '../src/trips'
-import testData from './test-data'
+import Trips from "../src/trips";
+import Traveler from "../src/traveler"
+import testData from "./test-data"
 
-let traveler
 
-describe('Traveler', () => {
+
+let traveler;
+
+describe('Trips', () => {
   beforeEach(() => {
-    traveler = new Traveler(testData.travelersTestData[1], testData.tripTestData, testData.destinationTripData)
-    // trip = new Trips(testData.tripTestData);
+    traveler = new Traveler(testData.travelersTestData[1], testData.tripTestData, testData.destinationTripData);
   });
 
   it('Should be a function', () => {
-    expect(Traveler).to.be.a('function');
+    expect(Trips).to.be.a('function');
   });
 
-  it('Should take in traveler information as an argument', () => {
-    expect(traveler.id).to.equal(2);
-    expect(traveler.name).to.equal('Rachael Vaughten');
-    expect(traveler.type).to.equal('thrill-seeker');
-  });
-
-  it('Should keep track of all trips traveler has and trip information', () => {
-    expect(traveler.trips.getTrips()).to.deep.equal(
+  it('Should take an array of trips as an argument and filter users trip', () => {
+    expect(traveler.trips.tripsArray).to.deep.equal(
       [{
         "id": 1,
         "userID": 2,
@@ -79,7 +74,13 @@ describe('Traveler', () => {
     }]);
   });
 
-  it('Should calculate total cost of all trips', () => {
-    expect(traveler.getTotalTripsCost()).to.equal(10296);
+  
+  it('Should calculate how much each trip is with a 10% fee for travel agent', () => {
+    expect(traveler.trips.calculateTripPrice(traveler.trips.tripsArray[0])).to.equal(957);
+    expect(traveler.trips.calculateTripPrice(traveler.trips.tripsArray[2])).to.equal(3630);
   });
+})
+
+it.skip('Should calculate ', () => {
+
 });
