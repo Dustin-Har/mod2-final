@@ -2,10 +2,13 @@
 @import 'mixins';
 /* This is an example of using Sass, otherwise plain CSS works too*/
 
+html {
+  height: 100%;
+  @include fontSize(1rem)
+}
 
 body {
   background: #EFEFEF;
-  width: 100%;
   margin: 0;
 }
 
@@ -20,13 +23,26 @@ header {
 }
 
 .logo{
+  background: $secondary-background-color;
+  border-radius: 25px;
   text-decoration: none;
-
+  @include fontSize(6rem);
     &:visited {
-      color: $main-text-color;
+      color: #000000;
     }
 }
 
 /*~~~~~~MAIN~~~~~~*/
 
+main {
 
+  @include flexBox(column, space-evenly, center);
+}
+
+.new-trip-form {
+  margin-top: 40px;
+  width: 80%;
+  height: 360px;
+  background: $secondary-background-color;
+  @include flexBox(column, center, center);
+}

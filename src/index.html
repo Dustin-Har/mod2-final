@@ -6,16 +6,18 @@
   </head>
   <body>
     <header>
-      <a href="/" class="logo">Travel Tracker</a>
-      <div>
+      <a href="/" class="logo">Travel <br> Tracker</a>
+      <div class="user">
         <i class="far fa-user-circle user-icon"></i>
         <span id="userName">Username</span>
       </div>
     </header>
     <main>
       <form class="new-trip-form" id="newTripForm">
-        <label for="destination">Where to?</label><br>
-        <input type="text" id="whereTo" name="destination"><br>
+        <div class="new-trip">
+          <label for="destination">Where to?</label><br>
+          <input type="text" id="whereTo" name="destination"><br>
+        </div>
         <div>
           <div>
             <i class="far fa-calendar-alt"></i>
@@ -30,14 +32,12 @@
         <button class="pending-trips">Pending Trips</button>
         <button class="past-trips">Past Trips</button>
         <button class="present-trips">Present Trips</button>
-      </div>
-      <div class="tabBox" id="tabBox">
+        <div class="tabBox" id="tabBox">
+          <span>no text yet</span>
+        </div>
       </div>
     </main>
     
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
