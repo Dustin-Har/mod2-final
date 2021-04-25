@@ -6,7 +6,7 @@
   </head>
   <body>
     <header>
-      <a href="/" class="logo">Travel <br> Tracker</a>
+      <a href="/" class="logo">TravelTracker</a>
       <div class="user">
         <i class="far fa-user-circle user-icon"></i>
         <span id="userName">Username</span>
@@ -26,12 +26,19 @@
         </div>
       </form>
       <div class="tabs">
-        <button class="upcoming-trips active">Upcoming Trips</button>
-        <button class="pending-trips">Pending Trips</button>
-        <button class="past-trips">Past Trips</button>
-        <button class="present-trips">Present Trips</button>
-        <div class="tabBox" id="tabBox">
-          <span>no text yet</span>
+        <div class="trip-tabs">
+          <button class="upcoming-trips active">Upcoming Trips</button>
+          <button class="pending-trips">Pending Trips</button>
+          <button class="past-trips">Past Trips</button>
+          <button class="present-trips">Present Trips</button>
+        </div>
+        <div class="flights-box" id="flightsBox">
+          <div class="flight-box" id="flightBox">
+            <span>Tokyo, Japan</span>
+            <span>leave on 05/05/2021 for 14 days</span>
+            <span>3 passengers</span>
+            <span>Status: Pending</span>
+          </div>
         </div>
       </div>
     </main>

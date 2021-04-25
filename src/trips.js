@@ -12,7 +12,6 @@ export default class Trips {
       return trip
     });
     this.tripsArray = tripsWithDestinations;
-    console.log(this.tripsArray)
   }
   
   calculateTripPrice(trip) {
@@ -23,7 +22,7 @@ export default class Trips {
     return Math.round(tripPrice);
   }
   
-  getTripInfo() {
+  getTrips() {
     return this.tripsArray;
   }
 }

@@ -30,14 +30,14 @@ describe('Trips', () => {
         "status": "approved",
         "suggestedActivities": [],
         "destinationInfo": {
-            "id": 4,
-            "destination": "Cartagena, Colombia",
-            "estimatedLodgingCostPerDay": 65,
-            "estimatedFlightCostPerPerson": 350,
-            "image": "https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-            "alt": "boats at a dock during the day time"
-          }
-        }, {
+          "id": 4,
+          "destination": "Cartagena, Colombia",
+          "estimatedLodgingCostPerDay": 65,
+          "estimatedFlightCostPerPerson": 350,
+          "image": "https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+          "alt": "boats at a dock during the day time"
+        }
+      }, {
         "id": 5,
         "userID": 2,
         "destinationID": 3,
@@ -71,10 +71,6 @@ describe('Trips', () => {
           "image": "https://images.unsplash.com/photo-1555333145-4acf190da336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
           "alt": "lit up city at night"
         }
-    }]);
+      }]);
   });
 })
-
-it.skip('Should calculate ', () => {
-
-});
