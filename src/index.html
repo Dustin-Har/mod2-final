@@ -27,17 +27,29 @@
       </form>
       <div class="tabs">
         <div class="trip-tabs">
-          <button class="upcoming-trips active">Upcoming Trips</button>
-          <button class="pending-trips">Pending Trips</button>
-          <button class="past-trips">Past Trips</button>
-          <button class="present-trips">Present Trips</button>
+          <button class="upcoming-trips active" id="upcomingTrips">Upcoming Trips</button>
+          <button class="pending-trips" id="pendingTrips">Pending Trips</button>
+          <button class="past-trips" id="pastTrips">Past Trips</button>
+          <button class="present-trips" id="presentTrips">Present Trips</button>
         </div>
         <div class="flights-box" id="flightsBox">
           <div class="flight-box" id="flightBox">
-            <span>Tokyo, Japan</span>
-            <span>leave on 05/05/2021 for 14 days</span>
-            <span>3 passengers</span>
-            <span>Status: Pending</span>
+            <div class="destination-box">
+              <span>DESTINATION</span>
+              <span>Tokyo, Japan</span>
+            </div>
+            <div class="departure-box">
+              <span>DEPARTURE</span>
+              <span>05/05/2021 for 14 days</span>
+            </div>
+            <div class="travelers-box">
+              <span>TRAVELERS</span>
+              <span>3</span>
+            </div>
+            <div class="status-box">
+              <span>STATUS</span>
+              <span>Pending</span>
+            </div>
           </div>
         </div>
       </div>

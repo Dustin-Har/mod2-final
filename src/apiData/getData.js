@@ -26,8 +26,8 @@ const getDestinations = () => {
   .catch(err => displayErrMessage(err));
 }
 
-const getAllApi = () => {
-  return Promise.all([getTravelers(),getSingleTraveler, getTrips(), getDestinations()])
+const getAllApi = (id) => {
+  return Promise.all([getTravelers(), getSingleTraveler(id), getTrips(), getDestinations()])
   .then(data => {
     let apiData = {}
     apiData.traveler = data[0];
@@ -39,4 +39,4 @@ const getAllApi = () => {
   .catch(err => displayErrMessage(err));
 };
 
-export {getTravelers, getSingleTraveler, getTrips, getDestinations, getAllApi}
+export {getTravelers, getSingleTraveler, getTrips, getDestinations, getAllApi};

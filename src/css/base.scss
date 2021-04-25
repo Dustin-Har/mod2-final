@@ -105,14 +105,21 @@ main {
   height: 100%;
   @include boxShadow();
   background: $secondary-background-color;
+  border: solid 1px black;
 }
 
 .flight-box {
-  color: white;
+  font-weight: bold;
+  color: #fffF00;
   height: 140px;
   width: 100%;
   @include flexBox(row, space-evenly, center);
   border-bottom: solid 1px black;
-  background-image: url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80");
+  background-position: center;
+
+    div {
+      @include flexBox(column, center, center);
+    }
 }
+
 

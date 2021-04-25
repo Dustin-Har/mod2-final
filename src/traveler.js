@@ -11,8 +11,58 @@ export default class Traveler {
   init() {
     this.trips.setDestinations(this.id);
   }
+
+  getPastTrips() {
+    const today = new Date();
+    const pastTrips = this.trips.tripsArray.filter(trip => {
+      const tripDate = new Date(trip.date);
+      if(today > tripDate) {
+        return trip;
+      }
+    })
+    if(pastTrips.length){
+      return pastTrips;   
+    } 
+    return 'You have no Past trips!';
+  }
+
+  getCurrentTrips() {
+    const today = new Date();
+    const currentTrips = this.trips.tripsArray.filter(trip => {
+      const tripDate = new Date(trip.date);
+      if(today === tripDate) {
+        return trip;
+      }
+    })
+    if(currentTrips.length){
+      return currentTrips;
+    }
+    return 'You are not on any trips right now';
+  }
+
+  getPendingTrips() {
+    const pendingTrips = this.trips.tripsArray.filter(trip => trip.status === "pending");
+    if(pendingTrips.length) {
+      return pendingTrips;
+    }
+    return 'No trips are pending!';
+  }
+
+  getUpcomingTrips() {
+    const today = new Date();
+    const UpcomingTrips = this.trips.tripsArray.filter(trip => {
+      const tripDate = new Date(trip.date);
+      if(today < tripDate) {
+        return trip;
+      }
+    })
+    if(UpcomingTrips.length){
+      return UpcomingTrips;
+    }
+    return 'You have no upcoming trips, Schedule a new trip above';
+  }
   
-  getTripInfo() {
+  getTripInfo () {
     return this.trips.getTrips();
   }
   
