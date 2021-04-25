@@ -10,7 +10,6 @@ let traveler
 describe('Traveler', () => {
   beforeEach(() => {
     traveler = new Traveler(testData.travelersTestData[1], testData.tripTestData, testData.destinationTripData)
-    // trip = new Trips(testData.tripTestData);
   });
 
   it('Should be a function', () => {

@@ -22,7 +22,7 @@ export default class Trips {
     return Math.round(tripPrice);
   }
   
-  getTripInfo() {
+  getTrips() {
     return this.tripsArray;
   }
 }

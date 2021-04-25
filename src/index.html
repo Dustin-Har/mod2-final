@@ -6,30 +6,43 @@
   </head>
   <body>
     <header>
-      <a href="/">Travel Tracker</a>
-      <div>
+      <a href="/" class="logo">TravelTracker</a>
+      <div class="user">
         <i class="far fa-user-circle user-icon"></i>
         <span id="userName">Username</span>
       </div>
     </header>
     <main>
       <form class="new-trip-form" id="newTripForm">
-        <label for="destination">Where to?</label><br>
-        <input type="text" id="whereTo" name="destination"><br>
+        <div class="new-trip-destination">
+          <label for="destination">Where to?</label>
+          <input type="text" id="whereTo" name="destination" >
+        </div>
+        <div class="trip-dates">
+          <i class="far fa-calendar-alt"></i>
+          <input type="text" name="date" id="startDate"></input>
+          <i class="fas fa-angle-right"></i>
+          <input type="text" name="date" id="endDate"></input>
+        </div>
       </form>
       <div class="tabs">
-        <button class="upcoming-trips active">Upcoming Trips</button>
-        <button class="pending-trips">Pending Trips</button>
-        <button class="past-trips">Past Trips</button>
-        <button class="present-trips">Present Trips</button>
-      </div>
-      <div id="tabBox">
+        <div class="trip-tabs">
+          <button class="upcoming-trips active">Upcoming Trips</button>
+          <button class="pending-trips">Pending Trips</button>
+          <button class="past-trips">Past Trips</button>
+          <button class="present-trips">Present Trips</button>
+        </div>
+        <div class="flights-box" id="flightsBox">
+          <div class="flight-box" id="flightBox">
+            <span>Tokyo, Japan</span>
+            <span>leave on 05/05/2021 for 14 days</span>
+            <span>3 passengers</span>
+            <span>Status: Pending</span>
+          </div>
+        </div>
       </div>
     </main>
     
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

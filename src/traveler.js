@@ -13,7 +13,7 @@ export default class Traveler {
   }
   
   getTripInfo() {
-    return this.trips.getTripInfo();
+    return this.trips.getTrips();
   }
   
   getTotalTripCost() {

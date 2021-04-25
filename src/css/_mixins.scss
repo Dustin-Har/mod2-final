@@ -1,0 +1,14 @@
+@mixin flexBox($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin fontSize($num) {
+  font-size: $num;
+}
+
+@mixin boxShadow() {
+  box-shadow: 0 0 20px 4px #6CDAEE;
+}
