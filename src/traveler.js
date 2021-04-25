@@ -20,8 +20,9 @@ export default class Traveler {
         return trip;
       }
     })
-    if(pastTrips.length){
-      return pastTrips;   
+    const filteredPast = pastTrips.sort((a, b) => new Date(a.date) - new Date(b.date))
+    if(filteredPast.length){
+      return filteredPast;   
     } 
     return 'You have no Past trips!';
   }
@@ -42,22 +43,24 @@ export default class Traveler {
 
   getPendingTrips() {
     const pendingTrips = this.trips.tripsArray.filter(trip => trip.status === "pending");
-    if(pendingTrips.length) {
-      return pendingTrips;
+    const filteredPending = pendingTrips.sort((a, b) => new Date(a.date) - new Date(b.date))
+    if(filteredPending.length) {
+      return filteredPending;
     }
     return 'No trips are pending!';
   }
 
   getUpcomingTrips() {
     const today = new Date();
-    const UpcomingTrips = this.trips.tripsArray.filter(trip => {
+    const upcomingTrips = this.trips.tripsArray.filter(trip => {
       const tripDate = new Date(trip.date);
       if(today < tripDate) {
         return trip;
       }
     })
-    if(UpcomingTrips.length){
-      return UpcomingTrips;
+    const filteredUpcoming = upcomingTrips.sort((a, b) => new Date(b.date) - new Date(a.date))
+    if(filteredUpcoming.length){
+      return filteredUpcoming;
     }
     return 'You have no upcoming trips, Schedule a new trip above';
   }

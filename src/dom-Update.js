@@ -3,10 +3,10 @@ updateUsername = (name) => {
   userName.innerText = `${name}`;
 }
 
-showUpcoming = (traveler) => {
+showTrips = (travelerTrips) => {
+  console.log(travelerTrips);
   flightsBox.innerHTML = '';
-  traveler.getUpcomingTrips().forEach(trip => {
-    console.log(trip.destinationInfo.image);
+  travelerTrips.forEach(trip => {
     flightsBox.innerHTML += `
       <div class="flight-box" id="flightBox" style="background-image: url('${trip.destinationInfo.image}');">
         <div class="destination-box">
@@ -28,4 +28,12 @@ showUpcoming = (traveler) => {
       </div>`
       flightsBox.style.backgroundImage=`url(${trip.destinationInfo.image})`;
   })
+}
+
+showMessage = (travelerTrips) => {
+  flightsBox.innerHTML = "";
+  flightsBox.innerHTML = `
+    <div class="message-box">
+      <h1>${travelerTrips}</h1>
+    </div>`
 }
