@@ -8,3 +8,7 @@
 @mixin fontSize($num) {
   font-size: $num;
 }
+
+@mixin boxShadow() {
+  box-shadow: 0 0 20px 8px #787878;
+}

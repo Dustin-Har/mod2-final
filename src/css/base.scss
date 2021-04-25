@@ -16,10 +16,11 @@ body {
 
 header {
   color: $main-text-color;
-  height: 300px;
+  height: 280px;
   @include flexBox(row, space-between, center);
   @include fontSize(3em);
   background: $secondary-color;
+  border-bottom: solid 1px black;
 }
 
 .logo{
@@ -35,14 +36,42 @@ header {
 /*~~~~~~MAIN~~~~~~*/
 
 main {
-
+  background-color: #D8D8D8;
   @include flexBox(column, space-evenly, center);
 }
 
 .new-trip-form {
+  @include boxShadow();
+  @include fontSize(2rem);
   margin-top: 40px;
   width: 80%;
   height: 360px;
   background: $secondary-background-color;
+  @include flexBox(column, space-evenly, center);
+}
+
+.new-trip-destination {
   @include flexBox(column, center, center);
+  color: #007fff;
+
+    label {
+      margin-bottom: 12px;
+    }
+
+    input {
+      @include fontSize(2rem);
+      width: 320px;
+      height: 52px;
+    }
+}
+
+.trip-dates {
+  width: 25rem; 
+  @include flexBox(row, space-around, center);
+
+    input {
+      @include fontSize(1.5çççrem);
+      width: 180px;
+      height: 40px;
+    }
 }
