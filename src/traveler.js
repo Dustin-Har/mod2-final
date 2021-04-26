@@ -20,7 +20,7 @@ export default class Traveler {
         return trip;
       }
     })
-    const filteredPast = pastTrips.sort((a, b) => new Date(a.date) - new Date(b.date))
+    const filteredPast = pastTrips.sort((a, b) => new Date(b.date) - new Date(a.date))
     if(filteredPast.length){
       return filteredPast;   
     } 

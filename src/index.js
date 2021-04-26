@@ -12,60 +12,46 @@ const pendingBttn = document.getElementById('pendingTrips');
 const pastBttn = document.getElementById('pastTrips');
 const presentBttn = document.getElementById('presentTrips');
 
-upcomingBttn.addEventListener('click', showUpcoming);
-pendingBttn.addEventListener('click', showpending);
-pastBttn.addEventListener('click', showPast);
-presentBttn.addEventListener('click', showCurrent);
+upcomingBttn.addEventListener('click', function() {
+  showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn);
+}); 
+pendingBttn.addEventListener('click', function() {
+  showTripStatus(newTraveler.getPendingTrips(), pendingBttn);
+}); 
+pastBttn.addEventListener('click', function() {
+  showTripStatus(newTraveler.getPastTrips(), pastBttn);
+}); 
+presentBttn.addEventListener('click', function() {
+  showTripStatus(newTraveler.getCurrentTrips(), presentBttn);
+}); 
 
 let newTraveler;
 
 window.addEventListener('load', onStartup);
 
 function onStartup() {
-  getAllApi(6) 
+  getAllApi(10) 
   .then(data => {
     newTraveler = new Traveler(data.singleTraveler, data.trips.trips, data.destinations.destinations);
-    // console.log(newTraveler.trips.tripsArray);
     updateUsername(newTraveler.name);
-    // console.log(newTraveler.getUpcomingTrips())
-    showUpcoming(newTraveler.getUpcomingTrips());
+    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn);
+    addDestinationChoices(data.destinations);
+    addTravelerChoices();
   })
   .catch(err => err.message);
 }
-// console.log(newTraveler)
 
-function showUpcoming() {
-  if(newTraveler.getUpcomingTrips().includes('')){
-    console.log(newTraveler.getUpcomingTrips().includes(''))
-    showMessage(newTraveler.getUpcomingTrips());
-    } else {
-      showTrips(newTraveler.getUpcomingTrips());
-    }
-}
 
-function showpending() {
-  if(newTraveler.getPendingTrips().includes('')){
-    showMessage(newTraveler.getPendingTrips());
+function showTripStatus(method, bttn) {
+  if(method.includes('')){
+    showMessage(method);
   } else {
-    showTrips(newTraveler.getPendingTrips())
+    showTrips(method);
   }
+  removeActiveClass();
+  addActiveClass(bttn);
 }
 
-function showPast() {
-  if(newTraveler.getPastTrips().includes('')){
-    showMessage(newTraveler.getPastTrips());
-  } else {
-    showTrips(newTraveler.getPastTrips())
-  }
-}
-
-function showCurrent () {
-  if(newTraveler.getCurrentTrips().includes('')){
-    showMessage(newTraveler.getCurrentTrips());
-  } else {
-    showTrips(newTraveler.getCurrentTrips())
-  }
-}
 
 
 

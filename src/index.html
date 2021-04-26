@@ -15,15 +15,23 @@
     <main>
       <form class="new-trip-form" id="newTripForm">
         <div class="new-trip-destination">
-          <label for="destination">Where to?</label>
-          <input type="text" id="whereTo" name="destination" >
+          <label for="WhereTo">Where to?</label>
+          <input list="whereTo" name="whereTo"/>
+          <datalist id="whereTo"></datalist>
         </div>
         <div class="trip-dates">
-          <i class="far fa-calendar-alt"></i>
-          <input type="text" name="date" id="startDate"></input>
-          <i class="fas fa-angle-right"></i>
-          <input type="text" name="date" id="endDate"></input>
+          <div class="dates">
+            <i class="far fa-calendar-alt"></i>
+            <input type="date" name="date" id="startDate"></input>
+            <i class="fas fa-angle-right"></i>
+            <input type="date" name="date" id="endDate"></input>
+          </div>
+          <div>
+            <label for="num-travelers"><i class="fas fa-user-friends"></i></label>
+            <select list="number" name="num-travelers" id="numTravelers" class="num-travelers"></select>
+          </div>
         </div>
+        <input type="submit">
       </form>
       <div class="tabs">
         <div class="trip-tabs">
@@ -34,30 +42,11 @@
         </div>
         <div class="flights-box" id="flightsBox">
           <div class="flight-box" id="flightBox">
-            <div class="destination-box">
-              <span>DESTINATION</span>
-              <span>Tokyo, Japan</span>
-            </div>
-            <div class="departure-box">
-              <span>DEPARTURE</span>
-              <span>05/05/2021 for 14 days</span>
-            </div>
-            <div class="travelers-box">
-              <span>TRAVELERS</span>
-              <span>3</span>
-            </div>
-            <div class="status-box">
-              <span>STATUS</span>
-              <span>Pending</span>
-            </div>
           </div>
           <div class="message-box">
-            <span>h</span>
           </div>
         </div>
       </div>
     </main>
-    
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

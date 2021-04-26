@@ -58,20 +58,31 @@ main {
     }
 
     input {
-      @include fontSize(2rem);
+      @include fontSize(1rem);
       width: 320px;
       height: 52px;
     }
 }
 
+
+
 .trip-dates {
-  width: 25rem; 
-  @include flexBox(row, space-around, center);
+  width: 100%; 
+  @include flexBox(row, space-evenly, flex-end);
+
+    .dates{
+      @include flexBox(row, center, center)
+    }
 
     input {
-      @include fontSize(1.5rem);
       width: 180px;
       height: 40px;
+    }
+
+    .num-travelers {
+      @include flexBox(column, center, center);
+      height: 50px;
+      width: 50px;
     }
 }
 
@@ -94,10 +105,11 @@ main {
         background: #FFD65B;
       }
 
-      .active {
-        border-bottom: 0;
-      }
-    
+      
+}
+
+.active {
+  border-bottom: 0;
 }
 
 .flights-box {
@@ -126,5 +138,6 @@ main {
   .message-box {
     height: 300px;
     @include flexBox(row, center, center);
+    background: $secondary-background-color;
   }
 
