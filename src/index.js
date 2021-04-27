@@ -11,6 +11,13 @@ const upcomingBttn = document.getElementById('upcomingTrips');
 const pendingBttn = document.getElementById('pendingTrips');
 const pastBttn = document.getElementById('pastTrips');
 const presentBttn = document.getElementById('presentTrips');
+const submitBttn = document.getElementById('submit');
+const destinationInput = document.getElementById('destinationPicked');
+const destinationStart = document.getElementById('startDate');
+const destinationEnd = document.getElementById('endDate');
+const travelersSelected = document.getElementById('numTravelers');
+
+submitBttn.addEventListener('click', getFormInfo);
 
 upcomingBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn);
@@ -50,6 +57,53 @@ function showTripStatus(method, bttn) {
   }
   removeActiveClass();
   addActiveClass(bttn);
+}
+
+function getFormInfo() {
+  event.preventDefault();
+  console.log(newTraveler.id);
+  makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
+}
+
+function calculateTripDuration(start, end) {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const differenceInDays = endDate.getTime() - startDate.getTime();
+  const tripDays = differenceInDays / (1000 * 60 * 60 * 24);
+  return tripDays;
+}
+
+function findDestinationInfo(requestedDestination) {
+  const destinationRequestId = newTraveler.trips.destinations.find(destination => requestedDestination === destination.destination);
+  return destinationRequestId.id;
+}
+
+function changeStartDateFormat(date) {
+  const updatedFormat = date.replaceAll('-', '/');
+  console.log(updatedFormat);
+  return updatedFormat;
+}
+
+function makePostRequest(travelerId, id, startDate, duration, travelers) {
+  console.log(startDate)
+  fetch('http://localhost:3001/api/v1/trips',{
+    method: 'POST',
+    body: JSON.stringify({
+      id: Date.now(),
+      userID: travelerId,
+      destinationID: id, 
+      travelers: travelers,
+      date: `${startDate}`,
+      duration: duration,
+      status: 'pending',
+      suggestedActivities: [],
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  .then(response => response.json())
+  .then(data => console.log(data));
 }
 
 

@@ -16,7 +16,7 @@
       <form class="new-trip-form" id="newTripForm">
         <div class="new-trip-destination">
           <label for="WhereTo">Where to?</label>
-          <input list="whereTo" name="whereTo"/>
+          <input list="whereTo" name="whereTo" id="destinationPicked"/>
           <datalist id="whereTo"></datalist>
         </div>
         <div class="trip-dates">
@@ -31,7 +31,7 @@
             <select list="number" name="num-travelers" id="numTravelers" class="num-travelers"></select>
           </div>
         </div>
-        <input type="submit">
+        <input type="submit" class="submit" value="Submit" id="submit">
       </form>
       <div class="tabs">
         <div class="trip-tabs">

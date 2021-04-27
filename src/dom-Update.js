@@ -3,8 +3,6 @@ const pendingBttn = document.getElementById('pendingTrips');
 const pastBttn = document.getElementById('pastTrips');
 const presentBttn = document.getElementById('presentTrips');
 const destinationOptions = document.getElementById('whereTo');
-const destinationStart = document.getElementById('startDate');
-const destinationEnd = document.getElementById('endDate');
 const travelerSelector = document.getElementById('numTravelers');
 
 

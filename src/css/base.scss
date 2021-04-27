@@ -86,6 +86,13 @@ main {
     }
 }
 
+.submit {
+  background: $button-color;
+  width: 50%;
+  height: 50px;
+  border-radius: 30px;
+}
+
 /*~~~~~~~TABS~~~~~~~*/
 
 .tabs {
@@ -102,7 +109,7 @@ main {
     }
       button {
         width: 24%;
-        background: #FFD65B;
+        background: $button-color;
       }
 
       
