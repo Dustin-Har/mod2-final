@@ -20,7 +20,7 @@ export default class Traveler {
         return trip;
       }
     })
-    const filteredPast = pastTrips.sort((a, b) => new Date(b.date) - new Date(a.date))
+    const filteredPast = pastTrips.sort((a, b) => new Date(a.date) - new Date(b.date))
     if(filteredPast.length){
       return filteredPast;   
     } 
@@ -69,8 +69,17 @@ export default class Traveler {
     return this.trips.getTrips();
   }
   
-  getTotalTripCost() {
-    const totalTripCost = this.trips.tripsArray.reduce((total, trip) => total + (this.trips.calculateTripPrice(trip)),0);
-    return totalTripCost;
+  getTotalTripCostForYear() {
+    const today = new Date();
+    let lastYear = new Date();
+    lastYear.setFullYear(lastYear.getFullYear() - 1);
+    const totalYearCost = this.trips.tripsArray.reduce((total, trip) => {
+      const tripDate = new Date(trip.date);
+      if(tripDate < today && tripDate > lastYear) {
+        return total + (this.trips.calculateTripPrice(trip));
+      }
+      return total;
+    },0);
+    return totalYearCost;
   }
 }
