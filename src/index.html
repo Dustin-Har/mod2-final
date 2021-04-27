@@ -8,10 +8,10 @@
   <body>
     <header>
       <a href="/" class="logo">TravelTracker</a>
-      <div class="user hidden">
+      <div class="user hidden" id="displayName">
         <div>
           <i class="far fa-user-circle user-icon"></i>
-          <span id="userName">Username</span>
+          <span id="travelerName">Username</span>
         </div>
         <div class="yearly-cost">
           <span class="year-spent" id="yearSpent"></span>
@@ -19,13 +19,14 @@
       </div>
     </header>
     <main>
-      <form class="login">
+      <form class="login" id="loginPage">
         <div class="login-box">
           <label for="username" class="user-label"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="username" required>
+          <input type="text" placeholder="Enter Username" name="username" id="username" required>
           <label for="password" class="password-label"><b>Password</b></label>
-          <input type="text" placeholder="Enter Password" name="password" required>
-          <button type="submit" class="login-submit">Login</button>
+          <input type="password" placeholder="Enter Password" name="password" id="password" required>
+          <button type="submit" class="login-submit" id="loginSubmit">Login</button>
+          <div class="login-error" id="loginError"></div>
         </div>
       </form>
       <form class="new-trip-form hidden" id="newTripForm" >
@@ -48,7 +49,7 @@
         </div>
         <input type="submit" class="submit" value="Submit" id="submit">
       </form>
-      <div class="tabs hidden">
+      <div class="tabs hidden" id="tripTabs">
         <div class="trip-tabs">
           <button class="upcoming-trips active" id="upcomingTrips">Upcoming Trips</button>
           <button class="pending-trips" id="pendingTrips">Pending Trips</button>

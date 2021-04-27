@@ -5,6 +5,7 @@ const presentBttn = document.getElementById('presentTrips');
 const destinationOptions = document.getElementById('whereTo');
 const travelerSelector = document.getElementById('numTravelers');
 const yearlySpent = document.getElementById('yearSpent');
+const userName = document.getElementById('travelerName');
 
 
 updateUsername = (name) => {

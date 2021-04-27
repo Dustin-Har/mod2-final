@@ -173,7 +173,6 @@ main {
 
 .flights-box {
   width: 100%;
-  min-height: 284px;
   @include boxShadow();
   background: $secondary-background-color;
   border: solid 1px black;

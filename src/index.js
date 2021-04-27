@@ -5,7 +5,6 @@ import './dom-Update';
 import {getTravelers, getSingleTraveler, getTrips, getDestinations, getAllApi} from './apiData/getData';
 import Traveler from './traveler';
 
-const userName = document.getElementById('userName');
 const flightsBox = document.getElementById('flightsBox');
 const upcomingBttn = document.getElementById('upcomingTrips');
 const pendingBttn = document.getElementById('pendingTrips');
@@ -16,7 +15,17 @@ const destinationInput = document.getElementById('destinationPicked');
 const destinationStart = document.getElementById('startDate');
 const destinationEnd = document.getElementById('endDate');
 const travelersSelected = document.getElementById('numTravelers');
+const username = document.getElementById('username'); 
+const password = document.getElementById('password');
+const loginbttn = document.getElementById('loginSubmit');
+const loginPage = document.getElementById('loginPage');
+const displayName = document.getElementById('displayName');
+const newTripForm = document.getElementById('newTripForm');
+const tripTabs = document.getElementById('tripTabs');
+const loginError = document.getElementById('loginError');
 
+
+loginbttn.addEventListener('click', login);
 submitBttn.addEventListener('click', getFormInfo);
 
 upcomingBttn.addEventListener('click', function() {
@@ -32,23 +41,53 @@ presentBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getCurrentTrips(), presentBttn, newTraveler);
 }); 
 
+
 let newTraveler;
 
-window.addEventListener('load', onStartup);
+// window.addEventListener('load', onStartup);
 
 
+function login () {
+  event.preventDefault();
+  if(username.value.split("traveler")[0] === "" && password.value === 'travel2020' && (Number(username.value.split("traveler")[1]) <= 50)) {
+    onStartup(username.value.split('traveler')[1])
+    addHidden();
+    removeHidden();
+  } else {
+    loginError.innerText = 'Invalid Username or Password';
+  }
+}
+
+function addHidden() {
+  loginPage.classList.add('hidden');
+}
+
+function removeHidden() {
+  displayName.classList.remove('hidden');
+  newTripForm.classList.remove('hidden');
+  tripTabs.classList.remove('hidden');
+}
 // take login username and use the last 2 numbers as the argument
-function onStartup() {
-  getAllApi(27) 
+function onStartup(id) {
+  setMinDate();
+  getAllApi(id) 
   .then(data => {
     newTraveler = new Traveler(data.singleTraveler, data.trips.trips, data.destinations.destinations);
     updateUsername(newTraveler.name);
+    console.log(newTraveler);
     showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
     addDestinationChoices(data.destinations);
     addTravelerChoices();
     showYearlySpent(newTraveler);
   })
   .catch(err => err.message);
+}
+
+function setMinDate() {
+  const currentDay = new Date();
+  const today = currentDay.toISOString().substring(0, 10);
+  destinationStart.setAttribute('min', today);
+  destinationEnd.setAttribute('min', today);
 }
 
 
@@ -106,8 +145,7 @@ function makePostRequest(travelerId, id, startDate, duration, travelers) {
       'Content-Type': 'application/json',
     }
   })
-  .then(response => response.json())
-  .then(data => console.log(data));
+  .then(response => response.json());
 }
 
 
