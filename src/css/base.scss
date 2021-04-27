@@ -7,15 +7,16 @@ html {
 }
 
 body {
-  background: #EFEFEF;
+  height: 100%;
+  background: $secondary-background-color;
   margin: 0;  
 }
 
 /*~~~~~~~Header~~~~~~*/
 
 header {
-  color: $main-text-color;
-  height: 280px;
+  color: $secondary-text-color;
+  height: 120px;
   @include flexBox(row, space-between, center);
   @include fontSize(3em);
   background: $secondary-color;
@@ -27,7 +28,7 @@ header {
   text-decoration: none;
   @include fontSize(4rem);
     &:visited {
-      color: $button-color;
+      color: $main-text-color;
     }
 }
 
@@ -37,7 +38,37 @@ header {
 }
 
 .year-spent {
-  color: $button-color;
+  color: $main-text-color;
+}
+
+/*~~~~~~Login Screen~~~~~*/
+
+main {
+  background: $secondary-color;
+}
+
+.login {
+  width: 100%;
+  height: 100;
+  @include flexBox(column, center, center);
+  background: $secondary-background-color;
+
+    .login-box {
+      width: 50%;
+      height: 200px;
+      @include flexBox(column, center, null);
+    }
+    
+}
+
+.user-label,
+.password-label {
+  color: $main-text-color;
+}
+
+.login-submit {
+  color: $secondary-color;
+  background: $main-text-color;
 }
 
 /*~~~~~~Trip Form~~~~~~*/
@@ -63,7 +94,7 @@ main {
   color: #FFFFFF;
 
     label {
-      color: $button-color;
+      color: $main-text-color;
       margin-bottom: 12px;
       @include fontSize(4rem);
     }
@@ -106,7 +137,7 @@ main {
 }
 
 .submit {
-  background: $button-color;
+  background: $main-text-color;
   width: 75%;
   height: 150px;
   border-radius: 30px;
@@ -130,7 +161,7 @@ main {
     button {
         @include fontSize(2em);
         width: 24%;
-        background: $button-color;
+        background: $main-text-color;
       }
 
       
@@ -171,8 +202,14 @@ main {
     background: $secondary-background-color;
   }
 
+  .hidden {
+    display: none;
+  }
 /*~~~~~~Media Querry~~~~~~*/
 
 @media only screen and (min-width: 800px) {
-
+header {
+  height: 140px;
+  @include fontSize(1.5rem);
+}
 }
