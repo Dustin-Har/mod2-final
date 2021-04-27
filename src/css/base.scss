@@ -22,13 +22,22 @@ header {
   border-bottom: solid 1px black;
 }
 
-.logo{
+.logo {
   border-radius: 25px;
   text-decoration: none;
   @include fontSize(4rem);
     &:visited {
       color: $button-color;
     }
+}
+
+.user {
+  @include flexBox(column, center, center);
+
+}
+
+.year-spent {
+  color: $button-color;
 }
 
 /*~~~~~~Trip Form~~~~~~*/
@@ -54,6 +63,7 @@ main {
   color: #FFFFFF;
 
     label {
+      color: $button-color;
       margin-bottom: 12px;
       @include fontSize(4rem);
     }

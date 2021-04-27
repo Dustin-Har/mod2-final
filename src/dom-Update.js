@@ -4,6 +4,7 @@ const pastBttn = document.getElementById('pastTrips');
 const presentBttn = document.getElementById('presentTrips');
 const destinationOptions = document.getElementById('whereTo');
 const travelerSelector = document.getElementById('numTravelers');
+const yearlySpent = document.getElementById('yearSpent');
 
 
 updateUsername = (name) => {
@@ -68,3 +69,6 @@ addTravelerChoices = () => {
   numberList.forEach(num => travelerSelector.insertAdjacentHTML('beforeend', `<option value="${num}">${num}</option>`));
 }
 
+showYearlySpent = (traveler) => {
+  yearlySpent.innerText = `Spent in past year: $${traveler.getTotalTripCostForYear()}`;
+}

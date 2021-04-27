@@ -46,6 +46,7 @@ function onStartup() {
     showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
     addDestinationChoices(data.destinations);
     addTravelerChoices();
+    showYearlySpent(newTraveler);
   })
   .catch(err => err.message);
 }
