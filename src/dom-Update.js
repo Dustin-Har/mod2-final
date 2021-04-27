@@ -6,7 +6,11 @@ const destinationOptions = document.getElementById('whereTo');
 const travelerSelector = document.getElementById('numTravelers');
 const yearlySpent = document.getElementById('yearSpent');
 const userName = document.getElementById('travelerName');
-
+const destinationInput = document.getElementById('destinationPicked');
+const destinationStart = document.getElementById('startDate');
+const destinationEnd = document.getElementById('endDate');
+const travelersSelected = document.getElementById('numTravelers');
+const requestTripPrice = document.getElementById('requestedTripPrice');
 
 updateUsername = (name) => {
   userName.innerText = `${name}`;
@@ -42,6 +46,10 @@ showTrips = (travelerTrips, traveler) => {
   })
 }
 
+displayPrice = (traveler) => {
+  travelerSelector.trips.calculateTripPrice()
+}
+
 showMessage = (travelerTrips) => {
   flightsBox.innerHTML = "";
   flightsBox.innerHTML = `
@@ -73,3 +81,9 @@ addTravelerChoices = () => {
 showYearlySpent = (traveler) => {
   yearlySpent.innerText = `Spent in past year: $${traveler.getTotalTripCostForYear()}`;
 }
+
+showTripPrice = (price) => {
+  requestTripPrice.innerText = `Trip price is: $${price}`;
+}
+
+

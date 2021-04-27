@@ -23,10 +23,23 @@ const displayName = document.getElementById('displayName');
 const newTripForm = document.getElementById('newTripForm');
 const tripTabs = document.getElementById('tripTabs');
 const loginError = document.getElementById('loginError');
+const submitTripRequest = document.getElementById('okayBttn');
+const nevermindBttn = document.getElementById('nevermindBttn');
+const tripPriceBox = document.getElementById('tripPriceBox');
 
 
 loginbttn.addEventListener('click', login);
-submitBttn.addEventListener('click', getFormInfo);
+submitTripRequest.addEventListener('click', function() {
+  getFormInfo(event);
+});
+
+nevermindBttn.addEventListener('clcik', function() {
+  hideBox(event);
+});
+
+submitBttn.addEventListener('click', function() {
+  calculateWantedTrip(event,findDestinationInfo(destinationInput.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value)
+});
 
 upcomingBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
@@ -42,9 +55,9 @@ presentBttn.addEventListener('click', function() {
 }); 
 
 
-let newTraveler;
+let newTraveler, wantedTripPrice;
 
-// window.addEventListener('load', onStartup);
+window.addEventListener('load', onStartup);
 
 
 function login () {
@@ -68,13 +81,12 @@ function removeHidden() {
   tripTabs.classList.remove('hidden');
 }
 // take login username and use the last 2 numbers as the argument
-function onStartup(id) {
+function onStartup() {
   setMinDate();
-  getAllApi(id) 
+  getAllApi(20) 
   .then(data => {
     newTraveler = new Traveler(data.singleTraveler, data.trips.trips, data.destinations.destinations);
     updateUsername(newTraveler.name);
-    console.log(newTraveler);
     showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
     addDestinationChoices(data.destinations);
     addTravelerChoices();
@@ -90,7 +102,6 @@ function setMinDate() {
   destinationEnd.setAttribute('min', today);
 }
 
-
 function showTripStatus(method, bttn, traveler) {
   if(method.includes('')){
     showMessage(method);
@@ -101,11 +112,29 @@ function showTripStatus(method, bttn, traveler) {
   addActiveClass(bttn);
 }
 
-function getFormInfo() {
-if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value){
+function calculateWantedTrip (event, destination, duration, travelers) {
   event.preventDefault();
+  if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value) {
+    const agentFee = 1.1;
+    const flyingCost = (travelers * destination.estimatedFlightCostPerPerson);
+    const dailyCost = (duration * destination.estimatedLodgingCostPerDay);
+    const tripPrice = ((flyingCost + dailyCost) * agentFee);
+    wantedTripPrice = Math.round(tripPrice);
+    showTripPrice(wantedTripPrice);
+  }
 }
-  makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
+
+function hideBox() {
+  // event.preventDefault();
+  tripPriceBox.classList.add('hidden');
+}
+
+function getFormInfo(event) {
+  event.preventDefault();
+  if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value){
+    hideBox(event);
+    makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
+  }
 }
 
 function calculateTripDuration(start, end) {
@@ -118,23 +147,21 @@ function calculateTripDuration(start, end) {
 
 function findDestinationInfo(requestedDestination) {
   const destinationRequestId = newTraveler.trips.destinations.find(destination => requestedDestination === destination.destination);
-  return destinationRequestId.id;
+  return destinationRequestId;
 }
 
 function changeStartDateFormat(date) {
   const updatedFormat = date.replaceAll('-', '/');
-  console.log(updatedFormat);
   return updatedFormat;
 }
 
-function makePostRequest(travelerId, id, startDate, duration, travelers) {
-  console.log(startDate)
+function makePostRequest(travelerId, destination, startDate, duration, travelers) {
   fetch('http://localhost:3001/api/v1/trips',{
     method: 'POST',
     body: JSON.stringify({
       id: Date.now(),
       userID: travelerId,
-      destinationID: id, 
+      destinationID: destination.id, 
       travelers: travelers,
       date: `${startDate}`,
       duration: duration,
@@ -145,7 +172,12 @@ function makePostRequest(travelerId, id, startDate, duration, travelers) {
       'Content-Type': 'application/json',
     }
   })
-  .then(response => response.json());
+  .then(response => response.json())
+  .then(data =>{
+    console.log(data);
+    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
+    showYearlySpent(newTraveler);
+  });
 }
 
 

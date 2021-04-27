@@ -8,7 +8,7 @@
   <body>
     <header>
       <a href="/" class="logo">TravelTracker</a>
-      <div class="user hidden" id="displayName">
+      <div class="user" id="displayName">
         <div>
           <i class="far fa-user-circle user-icon"></i>
           <span id="travelerName">Username</span>
@@ -19,7 +19,7 @@
       </div>
     </header>
     <main>
-      <form class="login" id="loginPage">
+      <form class="login hidden" id="loginPage">
         <div class="login-box">
           <label for="username" class="user-label"><b>Username</b></label>
           <input type="text" placeholder="Enter Username" name="username" id="username" required>
@@ -29,7 +29,7 @@
           <div class="login-error" id="loginError"></div>
         </div>
       </form>
-      <form class="new-trip-form hidden" id="newTripForm" >
+      <form class="new-trip-form " id="newTripForm" >
         <div class="new-trip-destination">
           <label for="WhereTo">Where to?</label>
           <input list="whereTo" name="whereTo" id="destinationPicked" required="required" aria-label="Destination Selection"/>
@@ -48,8 +48,15 @@
           </div>
         </div>
         <input type="submit" class="submit" value="Submit" id="submit">
+        <div class="trip-price-box" id="tripPriceBox">
+          <span class="tripPrice" id="requestedTripPrice"></span>
+          <div>
+            <button class="okay-bttn" id="okayBttn">Okay</button>
+            <button class="nevermind-bttn" id="nevermindBttn">Nevermind</button>
+          </div>
+        </div>
       </form>
-      <div class="tabs hidden" id="tripTabs">
+      <div class="tabs " id="tripTabs">
         <div class="trip-tabs">
           <button class="upcoming-trips active" id="upcomingTrips">Upcoming Trips</button>
           <button class="pending-trips" id="pendingTrips">Pending Trips</button>
@@ -61,6 +68,9 @@
           </div>
           <div class="message-box">
           </div>
+        </div>
+        <div>
+          <span></span>
         </div>
       </div>
     </main>
