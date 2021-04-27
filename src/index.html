@@ -16,19 +16,19 @@
       <form class="new-trip-form" id="newTripForm">
         <div class="new-trip-destination">
           <label for="WhereTo">Where to?</label>
-          <input list="whereTo" name="whereTo" id="destinationPicked"/>
+          <input list="whereTo" name="whereTo" id="destinationPicked" required="required" aria-label="Destination Selection"/>
           <datalist id="whereTo"></datalist>
         </div>
         <div class="trip-dates">
           <div class="dates">
-            <i class="far fa-calendar-alt"></i>
-            <input type="date" name="date" id="startDate"></input>
+            <i class="far fa-calendar-alt calendar"></i>
+            <input type="date" name="date" id="startDate" required="required" aria-label="Start Date"></input>
             <i class="fas fa-angle-right"></i>
-            <input type="date" name="date" id="endDate"></input>
+            <input type="date" name="date" id="endDate" required="required" aria-label="End Date"></input>
           </div>
           <div>
             <label for="num-travelers"><i class="fas fa-user-friends"></i></label>
-            <select list="number" name="num-travelers" id="numTravelers" class="num-travelers"></select>
+            <select list="number" name="num-travelers" id="numTravelers" class="num-travelers" required="required"></select>
           </div>
         </div>
         <input type="submit" class="submit" value="Submit" id="submit">

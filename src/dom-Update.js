@@ -10,7 +10,7 @@ updateUsername = (name) => {
   userName.innerText = `${name}`;
 }
 
-showTrips = (travelerTrips) => {
+showTrips = (travelerTrips, traveler) => {
   flightsBox.innerHTML = '';
   travelerTrips.forEach(trip => {
     flightsBox.innerHTML += `
@@ -30,6 +30,10 @@ showTrips = (travelerTrips) => {
         <div class="status-box">
           <span>STATUS</span>
           <span>${trip.status}</span>
+        </div>
+        <div class="price-box">
+          <span>TRIP PRICE</span>
+          <span>$${traveler.trips.calculateTripPrice(trip)}</span>
         </div>
       </div>`
       flightsBox.style.backgroundImage=`url(${trip.destinationInfo.image})`;

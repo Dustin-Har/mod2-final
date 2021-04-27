@@ -25,9 +25,9 @@ header {
 .logo{
   border-radius: 25px;
   text-decoration: none;
-  @include fontSize(6rem);
+  @include fontSize(4rem);
     &:visited {
-      color: #FFD65B;
+      color: $button-color;
     }
 }
 
@@ -43,7 +43,7 @@ main {
   @include fontSize(2rem);
   margin-top: 40px;
   width: 80%;
-  height: 360px;
+  height: 800px;
   background: $secondary-background-color;
   @include flexBox(column, space-evenly, center);
   margin-bottom: 4rem;
@@ -55,11 +55,12 @@ main {
 
     label {
       margin-bottom: 12px;
+      @include fontSize(4rem);
     }
 
     input {
-      @include fontSize(1rem);
-      width: 320px;
+      @include fontSize(3rem);
+      width: 80%;
       height: 52px;
     }
 }
@@ -68,13 +69,16 @@ main {
 
 .trip-dates {
   width: 100%; 
-  @include flexBox(row, space-evenly, flex-end);
+  @include flexBox(column, space-between, center);
+  height: 200px;
 
     .dates{
-      @include flexBox(row, center, center)
+      @include flexBox(row, center, center);
+      @include fontSize(2em);
     }
 
     input {
+      @include fontSize(1.25rem);
       width: 180px;
       height: 40px;
     }
@@ -86,28 +90,35 @@ main {
     }
 }
 
+
+.num-travelers {
+  @include fontSize(3rem);
+}
+
 .submit {
   background: $button-color;
-  width: 50%;
-  height: 50px;
+  width: 75%;
+  height: 150px;
   border-radius: 30px;
+  @include fontSize(2em);
 }
 
 /*~~~~~~~TABS~~~~~~~*/
 
 .tabs {
   width: 80%;
-  min-height: 320px;
+  min-height: 800px;
   @include flexBox(column, flex-start, center);
 
     .trip-tabs {
       z-index: 10;
-      height: 10%;
+      height: 80px;
       width: 100%;
       @include flexBox(row, space-between, space-between);
       
     }
-      button {
+    button {
+        @include fontSize(2em);
         width: 24%;
         background: $button-color;
       }
@@ -121,7 +132,7 @@ main {
 
 .flights-box {
   width: 100%;
-  min-height: 300px;
+  min-height: 284px;
   @include boxShadow();
   background: $secondary-background-color;
   border: solid 1px black;
@@ -138,13 +149,20 @@ main {
 
     div {
       @include flexBox(column, center, center);
+      background: black;
     }
 
   }
   
   .message-box {
+    @include fontSize(2em);
     height: 300px;
     @include flexBox(row, center, center);
     background: $secondary-background-color;
   }
 
+/*~~~~~~Media Querry~~~~~~*/
+
+@media only screen and (min-width: 800px) {
+
+}

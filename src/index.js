@@ -20,28 +20,30 @@ const travelersSelected = document.getElementById('numTravelers');
 submitBttn.addEventListener('click', getFormInfo);
 
 upcomingBttn.addEventListener('click', function() {
-  showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn);
+  showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
 }); 
 pendingBttn.addEventListener('click', function() {
-  showTripStatus(newTraveler.getPendingTrips(), pendingBttn);
+  showTripStatus(newTraveler.getPendingTrips(), pendingBttn, newTraveler);
 }); 
 pastBttn.addEventListener('click', function() {
-  showTripStatus(newTraveler.getPastTrips(), pastBttn);
+  showTripStatus(newTraveler.getPastTrips(), pastBttn, newTraveler);
 }); 
 presentBttn.addEventListener('click', function() {
-  showTripStatus(newTraveler.getCurrentTrips(), presentBttn);
+  showTripStatus(newTraveler.getCurrentTrips(), presentBttn, newTraveler);
 }); 
 
 let newTraveler;
 
 window.addEventListener('load', onStartup);
 
+
+// take login username and use the last 2 numbers as the argument
 function onStartup() {
-  getAllApi(10) 
+  getAllApi(27) 
   .then(data => {
     newTraveler = new Traveler(data.singleTraveler, data.trips.trips, data.destinations.destinations);
     updateUsername(newTraveler.name);
-    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn);
+    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
     addDestinationChoices(data.destinations);
     addTravelerChoices();
   })
@@ -49,19 +51,20 @@ function onStartup() {
 }
 
 
-function showTripStatus(method, bttn) {
+function showTripStatus(method, bttn, traveler) {
   if(method.includes('')){
     showMessage(method);
   } else {
-    showTrips(method);
+    showTrips(method, traveler);
   }
   removeActiveClass();
   addActiveClass(bttn);
 }
 
 function getFormInfo() {
+if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value){
   event.preventDefault();
-  console.log(newTraveler.id);
+}
   makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
 }
 
