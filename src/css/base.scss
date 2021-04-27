@@ -7,28 +7,68 @@ html {
 }
 
 body {
-  background: #EFEFEF;
+  height: 100%;
+  background: $secondary-background-color;
   margin: 0;  
 }
 
 /*~~~~~~~Header~~~~~~*/
 
 header {
-  color: $main-text-color;
-  height: 280px;
+  color: $secondary-text-color;
+  height: 120px;
   @include flexBox(row, space-between, center);
   @include fontSize(3em);
   background: $secondary-color;
   border-bottom: solid 1px black;
 }
 
-.logo{
+.logo {
   border-radius: 25px;
   text-decoration: none;
-  @include fontSize(6rem);
+  @include fontSize(4rem);
     &:visited {
-      color: #FFD65B;
+      color: $main-text-color;
     }
+}
+
+.user {
+  @include flexBox(column, center, center);
+
+}
+
+.year-spent {
+  color: $main-text-color;
+}
+
+/*~~~~~~Login Screen~~~~~*/
+
+main {
+  background: $secondary-color;
+}
+
+.login {
+  width: 100%;
+  height: 100;
+  @include flexBox(column, center, center);
+  background: $secondary-background-color;
+
+    .login-box {
+      width: 50%;
+      height: 200px;
+      @include flexBox(column, center, null);
+    }
+    
+}
+
+.user-label,
+.password-label {
+  color: $main-text-color;
+}
+
+.login-submit {
+  color: $secondary-color;
+  background: $main-text-color;
 }
 
 /*~~~~~~Trip Form~~~~~~*/
@@ -43,7 +83,7 @@ main {
   @include fontSize(2rem);
   margin-top: 40px;
   width: 80%;
-  height: 360px;
+  height: 800px;
   background: $secondary-background-color;
   @include flexBox(column, space-evenly, center);
   margin-bottom: 4rem;
@@ -54,65 +94,121 @@ main {
   color: #FFFFFF;
 
     label {
+      color: $main-text-color;
       margin-bottom: 12px;
+      @include fontSize(4rem);
     }
 
     input {
-      @include fontSize(2rem);
-      width: 320px;
+      @include fontSize(3rem);
+      width: 80%;
       height: 52px;
     }
 }
 
+
+
 .trip-dates {
-  width: 25rem; 
-  @include flexBox(row, space-around, center);
+  width: 100%; 
+  @include flexBox(column, space-between, center);
+  height: 200px;
+
+    .dates{
+      @include flexBox(row, center, center);
+      @include fontSize(2em);
+    }
 
     input {
-      @include fontSize(1.5rem);
+      @include fontSize(1.25rem);
       width: 180px;
       height: 40px;
     }
+
+    .num-travelers {
+      @include flexBox(column, center, center);
+      height: 50px;
+      width: 50px;
+    }
+}
+
+
+.num-travelers {
+  @include fontSize(3rem);
+}
+
+.submit {
+  background: $main-text-color;
+  width: 75%;
+  height: 150px;
+  border-radius: 30px;
+  @include fontSize(2em);
 }
 
 /*~~~~~~~TABS~~~~~~~*/
 
 .tabs {
   width: 80%;
-  min-height: 320px;
+  min-height: 800px;
   @include flexBox(column, flex-start, center);
 
     .trip-tabs {
       z-index: 10;
-      height: 10%;
+      height: 80px;
       width: 100%;
       @include flexBox(row, space-between, space-between);
       
     }
-      button {
+    button {
+        @include fontSize(2em);
         width: 24%;
-        background: #FFD65B;
+        background: $main-text-color;
       }
 
-      .active {
-        border-bottom: 0;
-      }
-    
+      
+}
+
+.active {
+  border-bottom: 0;
 }
 
 .flights-box {
   width: 100%;
-  height: 100%;
   @include boxShadow();
   background: $secondary-background-color;
+  border: solid 1px black;
 }
 
 .flight-box {
-  color: white;
+  font-weight: bold;
+  color: #007dc5;
   height: 140px;
   width: 100%;
   @include flexBox(row, space-evenly, center);
-  border-bottom: solid 1px black;
-  background-image: url("https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1971&q=80");
-}
+  border-bottom: solid 2px black;
+  background-position: center;
 
+    div {
+      @include flexBox(column, center, center);
+      background: black;
+    }
+
+  }
+  
+  .message-box {
+    @include fontSize(2em);
+    height: 300px;
+    @include flexBox(row, center, center);
+    background: $secondary-background-color;
+  }
+
+  .hidden {
+    display: none;
+  }
+/*~~~~~~Media Querry~~~~~~*/
+
+@media only screen and (min-width: 800px) {
+header {
+  height: 140px;
+  @include fontSize(1.5rem);
+}
+}

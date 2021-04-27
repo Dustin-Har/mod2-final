@@ -3,46 +3,76 @@
   <head>
     <title>Travel Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header>
       <a href="/" class="logo">TravelTracker</a>
-      <div class="user">
-        <i class="far fa-user-circle user-icon"></i>
-        <span id="userName">Username</span>
+      <div class="user" id="displayName">
+        <div>
+          <i class="far fa-user-circle user-icon"></i>
+          <span id="travelerName">Username</span>
+        </div>
+        <div class="yearly-cost">
+          <span class="year-spent" id="yearSpent"></span>
+        </div>
       </div>
     </header>
     <main>
-      <form class="new-trip-form" id="newTripForm">
-        <div class="new-trip-destination">
-          <label for="destination">Where to?</label>
-          <input type="text" id="whereTo" name="destination" >
-        </div>
-        <div class="trip-dates">
-          <i class="far fa-calendar-alt"></i>
-          <input type="text" name="date" id="startDate"></input>
-          <i class="fas fa-angle-right"></i>
-          <input type="text" name="date" id="endDate"></input>
+      <form class="login hidden" id="loginPage">
+        <div class="login-box">
+          <label for="username" class="user-label"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" id="username" required>
+          <label for="password" class="password-label"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" id="password" required>
+          <button type="submit" class="login-submit" id="loginSubmit">Login</button>
+          <div class="login-error" id="loginError"></div>
         </div>
       </form>
-      <div class="tabs">
+      <form class="new-trip-form " id="newTripForm" >
+        <div class="new-trip-destination">
+          <label for="WhereTo">Where to?</label>
+          <input list="whereTo" name="whereTo" id="destinationPicked" required="required" aria-label="Destination Selection"/>
+          <datalist id="whereTo"></datalist>
+        </div>
+        <div class="trip-dates">
+          <div class="dates">
+            <i class="far fa-calendar-alt calendar"></i>
+            <input type="date" name="date" id="startDate" required="required" aria-label="Start Date"></input>
+            <i class="fas fa-angle-right"></i>
+            <input type="date" name="date" id="endDate" required="required" aria-label="End Date"></input>
+          </div>
+          <div>
+            <label for="num-travelers"><i class="fas fa-user-friends"></i></label>
+            <select list="number" name="num-travelers" id="numTravelers" class="num-travelers" required="required"></select>
+          </div>
+        </div>
+        <input type="submit" class="submit" value="Submit" id="submit">
+        <div class="trip-price-box" id="tripPriceBox">
+          <span class="tripPrice" id="requestedTripPrice"></span>
+          <div>
+            <button class="okay-bttn" id="okayBttn">Okay</button>
+            <button class="nevermind-bttn" id="nevermindBttn">Nevermind</button>
+          </div>
+        </div>
+      </form>
+      <div class="tabs " id="tripTabs">
         <div class="trip-tabs">
-          <button class="upcoming-trips active">Upcoming Trips</button>
-          <button class="pending-trips">Pending Trips</button>
-          <button class="past-trips">Past Trips</button>
-          <button class="present-trips">Present Trips</button>
+          <button class="upcoming-trips active" id="upcomingTrips">Upcoming Trips</button>
+          <button class="pending-trips" id="pendingTrips">Pending Trips</button>
+          <button class="past-trips" id="pastTrips">Past Trips</button>
+          <button class="present-trips" id="presentTrips">Present Trips</button>
         </div>
         <div class="flights-box" id="flightsBox">
           <div class="flight-box" id="flightBox">
-            <span>Tokyo, Japan</span>
-            <span>leave on 05/05/2021 for 14 days</span>
-            <span>3 passengers</span>
-            <span>Status: Pending</span>
           </div>
+          <div class="message-box">
+          </div>
+        </div>
+        <div>
+          <span></span>
         </div>
       </div>
     </main>
-    
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

@@ -44,7 +44,7 @@ describe('Trips', () => {
         "travelers": 3,
         "date": "2020/04/30",
         "duration": 18,
-        "status": "approved",
+        "status": "pending",
         "suggestedActivities": [],
         "destinationInfo": {
           "id": 3,
