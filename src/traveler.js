@@ -70,12 +70,11 @@ export default class Traveler {
   }
   
   getTotalTripCostForYear() {
-    const today = new Date();
     let lastYear = new Date();
     lastYear.setFullYear(lastYear.getFullYear() - 1);
-    const totalYearCost = this.trips.tripsArray.reduce((total, trip) => {
+    let totalYearCost = this.trips.tripsArray.reduce((total, trip) => {
       const tripDate = new Date(trip.date);
-      if(tripDate < today && tripDate > lastYear) {
+      if(tripDate >= lastYear) {
         return total + (this.trips.calculateTripPrice(trip));
       }
       return total;

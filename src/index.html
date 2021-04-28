@@ -8,7 +8,7 @@
   <body>
     <header>
       <a href="/" class="logo">TravelTracker</a>
-      <div class="user" id="displayName">
+      <div class="user hidden" id="displayName">
         <div>
           <i class="far fa-user-circle user-icon"></i>
           <span id="travelerName">Username</span>
@@ -19,7 +19,7 @@
       </div>
     </header>
     <main>
-      <form class="login hidden" id="loginPage">
+      <form class="login" id="loginPage">
         <div class="login-box">
           <label for="username" class="user-label"><b>Username</b></label>
           <input type="text" placeholder="Enter Username" name="username" id="username" required>
@@ -29,7 +29,7 @@
           <div class="login-error" id="loginError"></div>
         </div>
       </form>
-      <form class="new-trip-form " id="newTripForm" >
+      <form class="new-trip-form hidden" id="newTripForm" >
         <div class="new-trip-destination">
           <label for="WhereTo">Where to?</label>
           <input list="whereTo" name="whereTo" id="destinationPicked" required="required" aria-label="Destination Selection"/>
@@ -38,9 +38,9 @@
         <div class="trip-dates">
           <div class="dates">
             <i class="far fa-calendar-alt calendar"></i>
-            <input type="date" name="date" id="startDate" required="required" aria-label="Start Date"></input>
+            <input class="start-date" type="date" name="date" id="startDate" required="required" aria-label="Start Date"></input>
             <i class="fas fa-angle-right"></i>
-            <input type="date" name="date" id="endDate" required="required" aria-label="End Date"></input>
+            <input class="end-date" type="date" name="date" id="endDate" required="required" aria-label="End Date"></input>
           </div>
           <div>
             <label for="num-travelers"><i class="fas fa-user-friends"></i></label>
@@ -48,15 +48,15 @@
           </div>
         </div>
         <input type="submit" class="submit" value="Submit" id="submit">
-        <div class="trip-price-box" id="tripPriceBox">
-          <span class="tripPrice" id="requestedTripPrice"></span>
+        <div class="trip-price-box hidden" id="tripPriceBox">
+          <span class="trip-price" id="requestedTripPrice"> price is shown here</span>
           <div>
             <button class="okay-bttn" id="okayBttn">Okay</button>
-            <button class="nevermind-bttn" id="nevermindBttn">Nevermind</button>
+            <button class="nevermind-bttn" type="button" id="nevermindBttn">Nevermind</button>
           </div>
         </div>
       </form>
-      <div class="tabs " id="tripTabs">
+      <div class="tabs hidden" id="tripTabs">
         <div class="trip-tabs">
           <button class="upcoming-trips active" id="upcomingTrips">Upcoming Trips</button>
           <button class="pending-trips" id="pendingTrips">Pending Trips</button>
