@@ -46,9 +46,6 @@ showTrips = (travelerTrips, traveler) => {
   })
 }
 
-displayPrice = (traveler) => {
-  travelerSelector.trips.calculateTripPrice()
-}
 
 showMessage = (travelerTrips) => {
   flightsBox.innerHTML = "";

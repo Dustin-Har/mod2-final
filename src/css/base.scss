@@ -24,9 +24,8 @@ header {
 }
 
 .logo {
-  border-radius: 25px;
   text-decoration: none;
-  @include fontSize(4rem);
+  @include fontSize(1.5rem);
     &:visited {
       color: $main-text-color;
     }
@@ -35,6 +34,9 @@ header {
 .user {
   @include flexBox(column, center, center);
 
+    div {
+      @include fontSize(1rem);
+    }
 }
 
 .year-spent {
@@ -49,26 +51,37 @@ main {
 
 .login {
   width: 100%;
-  height: 100;
+  height: 100%;
   @include flexBox(column, center, center);
   background: $secondary-background-color;
 
     .login-box {
       width: 50%;
       height: 200px;
-      @include flexBox(column, center, null);
+      @include flexBox(column, center, center);
+
     }
     
 }
 
 .user-label,
 .password-label {
+  @include fontSize(1.5rem);
+  margin-top: 20px;
   color: $main-text-color;
 }
 
 .login-submit {
+  @include fontSize(1.5rem);
+  width: 100%;
+  height: 100px;
+  border-radius: 25px;
+  margin-top: 20px;
   color: $secondary-color;
   background: $main-text-color;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 /*~~~~~~Trip Form~~~~~~*/
@@ -80,10 +93,10 @@ main {
 
 .new-trip-form {
   @include boxShadow();
-  @include fontSize(2rem);
+  @include fontSize(1rem);
   margin-top: 40px;
   width: 80%;
-  height: 800px;
+  height: 500px;
   background: $secondary-background-color;
   @include flexBox(column, space-evenly, center);
   margin-bottom: 4rem;
@@ -92,56 +105,79 @@ main {
 .new-trip-destination {
   @include flexBox(column, center, center);
   color: #FFFFFF;
+  width: 100%;
 
     label {
       color: $main-text-color;
       margin-bottom: 12px;
-      @include fontSize(4rem);
+      @include fontSize(2rem);
     }
 
     input {
-      @include fontSize(3rem);
-      width: 80%;
+      @include fontSize(.75rem);
+      width: 60%;
       height: 52px;
+      &:hover {
+        cursor: pointer;
+      }
     }
 }
 
-
-
 .trip-dates {
   width: 100%; 
-  @include flexBox(column, space-between, center);
+  @include flexBox(column, space-evenly, center);
   height: 200px;
 
     .dates{
       @include flexBox(row, center, center);
-      @include fontSize(2em);
+      @include fontSize(1em);
     }
 
     input {
-      @include fontSize(1.25rem);
-      width: 180px;
+      @include fontSize(.5rem);
+      width: 100px;
       height: 40px;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .num-travelers {
+      @include fontSize(1.75rem);
       @include flexBox(column, center, center);
       height: 50px;
       width: 50px;
     }
 }
 
-
-.num-travelers {
-  @include fontSize(3rem);
-}
-
 .submit {
   background: $main-text-color;
   width: 75%;
-  height: 150px;
+  height: 75px;
   border-radius: 30px;
-  @include fontSize(2em);
+  @include fontSize(1.75em);
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.trip-price-box {
+  @include flexBox(row, space-around, center);
+  width: 100%;
+  height: 100px;
+
+    div {
+      @include flexBox(column, space-around, center);
+      height: 75px;
+
+        button {
+          background: $main-text-color;
+          width: 75px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+    }
 }
 
 /*~~~~~~~TABS~~~~~~~*/
@@ -153,23 +189,27 @@ main {
 
     .trip-tabs {
       z-index: 10;
-      height: 80px;
+      height: 40px;
       width: 100%;
       @include flexBox(row, space-between, space-between);
       
     }
     button {
-        @include fontSize(2em);
+        @include fontSize(.8rem);
         width: 24%;
         background: $main-text-color;
+        &:hover {
+          cursor: pointer;
+        }
       }
-
+      
+      .active {
+        background: $secondary-background-color;
+        border-bottom: 0;
+      }
       
 }
 
-.active {
-  border-bottom: 0;
-}
 
 .flights-box {
   width: 100%;
@@ -180,22 +220,25 @@ main {
 
 .flight-box {
   font-weight: bold;
-  color: #007dc5;
+  color: black;
   height: 140px;
   width: 100%;
-  @include flexBox(row, space-evenly, center);
+  @include flexBox(column, space-evenly, center);
   border-bottom: solid 2px black;
   background-position: center;
 
     div {
-      @include flexBox(column, center, center);
-      background: black;
+      width: 75%;
+      @include flexBox(row, space-between, center);
+      -webkit-text-stroke-width: .75px;
+      -webkit-text-stroke-color: $secondary-background-color;
+      @include fontSize(.9rem)
     }
 
   }
   
   .message-box {
-    @include fontSize(2em);
+    @include fontSize(1em);
     height: 300px;
     @include flexBox(row, center, center);
     background: $secondary-background-color;
@@ -206,9 +249,152 @@ main {
   }
 /*~~~~~~Media Querry~~~~~~*/
 
-@media only screen and (min-width: 800px) {
-header {
-  height: 140px;
-  @include fontSize(1.5rem);
-}
+/*~~~~~~~Header~~~~~~*/
+
+@media only screen and (min-width: 950px) {
+  header {
+    height: 120px;
+    @include fontSize(3em);
+  }
+
+  .logo {
+    @include fontSize(4rem);
+  }
+
+  .user > div {
+      @include fontSize(2rem);
+  }
+
+/*~~~~~~Login Screen~~~~~*/
+
+/*~~~~~~Trip Form~~~~~~*/
+  .new-trip-form {
+    @include fontSize(2rem);
+    height: 500px;
+  }
+
+  .new-trip-destination {
+
+    label {
+      color: $main-text-color;
+      margin-bottom: 12px;
+      @include fontSize(3rem);
+    }
+      
+    input {
+      @include fontSize(2rem);
+      width: 50%;
+    }
+  }
+    
+  .trip-dates {
+    width: 100%;
+    @include flexBox(row, space-evenly, center);
+    height: 200px;
+      
+    .dates {
+      @include flexBox(row, center, center);
+      @include fontSize(1.5em);
+    }
+      
+    input {
+      @include fontSize(2rem);
+      width: 300px;
+      height: 50px;
+    }
+  }
+    
+  .submit {
+    background: $main-text-color;
+    width: 30%;
+    height: 75px;
+    border-radius: 30px;
+    @include fontSize(1em);
+  }
+    
+  .trip-price-box {
+    @include flexBox(row, space-around, center);
+    width: 100%;
+    height: 100px;
+      
+    div {
+      @include flexBox(column, space-around, center);
+      height: 75px;
+        
+      button {
+        height: 45%;
+        width: 100px;
+        border-radius: 20px;
+      }
+    }
+  }
+  /*~~~~~~~TABS~~~~~~~*/
+
+  .tabs {
+    width: 80%;
+    min-height: 800px;
+    @include flexBox(column, flex-start, center);
+
+    .trip-tabs {
+      z-index: 10;
+      height: 40px;
+      width: 100%;
+      @include flexBox(row, space-between, space-between);
+
+    }
+
+    button {
+      @include fontSize(.8rem);
+      width: 24%;
+      background: $main-text-color;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .active {
+      background: $secondary-background-color;
+      border-bottom: 0;
+    }
+
+  }
+
+
+  .flights-box {
+    width: 100%;
+    @include boxShadow();
+    background: $secondary-background-color;
+    border: solid 1px black;
+  }
+
+  .flight-box {
+    font-weight: bold;
+    color: black;
+    height: 140px;
+    width: 100%;
+    @include flexBox(column, space-evenly, center);
+    border-bottom: solid 2px black;
+    background-position: center;
+
+    div {
+      width: 75%;
+      @include flexBox(row, space-between, center);
+      -webkit-text-stroke-width: .75px;
+      -webkit-text-stroke-color: $secondary-background-color;
+      @include fontSize(.9rem)
+    }
+
+  }
+
+  .message-box {
+    @include fontSize(1em);
+    height: 300px;
+    @include flexBox(row, center, center);
+    background: $secondary-background-color;
+  }
+
+  .hidden {
+    display: none;
+  }
 }

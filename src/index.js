@@ -28,16 +28,23 @@ const nevermindBttn = document.getElementById('nevermindBttn');
 const tripPriceBox = document.getElementById('tripPriceBox');
 
 
-loginbttn.addEventListener('click', login);
-submitTripRequest.addEventListener('click', function() {
-  getFormInfo(event);
+loginbttn.addEventListener('click', function(event) {
+  event.preventDefault();
+  login();
 });
 
-nevermindBttn.addEventListener('clcik', function() {
-  hideBox(event);
+submitTripRequest.addEventListener('click', function(event) {
+  event.preventDefault();
+  getFormInfo();
 });
 
-submitBttn.addEventListener('click', function() {
+nevermindBttn.addEventListener('click', function() {
+  console.log('made it')
+  addHidden(tripPriceBox);
+});
+
+submitBttn.addEventListener('click', function(event) {
+  event.preventDefault();
   calculateWantedTrip(event,findDestinationInfo(destinationInput.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value)
 });
 
@@ -57,33 +64,23 @@ presentBttn.addEventListener('click', function() {
 
 let newTraveler, wantedTripPrice;
 
-window.addEventListener('load', onStartup);
+// window.addEventListener('load', onStartup);
 
 
-function login () {
-  event.preventDefault();
+function login() {
   if(username.value.split("traveler")[0] === "" && password.value === 'travel2020' && (Number(username.value.split("traveler")[1]) <= 50)) {
     onStartup(username.value.split('traveler')[1])
-    addHidden();
-    removeHidden();
+    addHidden(loginPage);
+    revealMainPage();
   } else {
     loginError.innerText = 'Invalid Username or Password';
   }
 }
 
-function addHidden() {
-  loginPage.classList.add('hidden');
-}
 
-function removeHidden() {
-  displayName.classList.remove('hidden');
-  newTripForm.classList.remove('hidden');
-  tripTabs.classList.remove('hidden');
-}
-// take login username and use the last 2 numbers as the argument
-function onStartup() {
+function onStartup(id) {
   setMinDate();
-  getAllApi(20) 
+  getAllApi(id) 
   .then(data => {
     newTraveler = new Traveler(data.singleTraveler, data.trips.trips, data.destinations.destinations);
     updateUsername(newTraveler.name);
@@ -93,6 +90,14 @@ function onStartup() {
     showYearlySpent(newTraveler);
   })
   .catch(err => err.message);
+}
+
+
+
+function revealMainPage() {
+  displayName.classList.remove('hidden');
+  newTripForm.classList.remove('hidden');
+  tripTabs.classList.remove('hidden');
 }
 
 function setMinDate() {
@@ -113,6 +118,7 @@ function showTripStatus(method, bttn, traveler) {
 }
 
 function calculateWantedTrip (event, destination, duration, travelers) {
+  removeHidden(tripPriceBox);
   event.preventDefault();
   if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value) {
     const agentFee = 1.1;
@@ -124,15 +130,18 @@ function calculateWantedTrip (event, destination, duration, travelers) {
   }
 }
 
-function hideBox() {
-  // event.preventDefault();
-  tripPriceBox.classList.add('hidden');
+function addHidden( property) {
+  console.log('made it');
+  property.classList.add('hidden');
 }
 
-function getFormInfo(event) {
-  event.preventDefault();
+function removeHidden(property) {
+  property.classList.remove('hidden');
+}
+
+function getFormInfo() {
   if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value){
-    hideBox(event);
+    addHidden(tripPriceBox);
     makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
   }
 }
@@ -173,11 +182,9 @@ function makePostRequest(travelerId, destination, startDate, duration, travelers
     }
   })
   .then(response => response.json())
-  .then(data =>{
-    console.log(data);
-    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
-    showYearlySpent(newTraveler);
-  });
+  showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
+  showYearlySpent(newTraveler);
+
 }
 
 
