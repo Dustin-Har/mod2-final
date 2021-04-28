@@ -178,11 +178,12 @@ function makePostRequest(travelerId, destination, startDate, duration, travelers
   })
   .then(response => response.json())
   .then(data => {
+    newTraveler.init();
     newTraveler.trips.tripsArray.push(data);
+    showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
+    showYearlySpent(newTraveler);
   })
   .catch(err => err.message);
-  showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
-  showYearlySpent(newTraveler);
 }
 
 
