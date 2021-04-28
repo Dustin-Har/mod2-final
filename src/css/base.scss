@@ -267,6 +267,10 @@ main {
 
 /*~~~~~~Login Screen~~~~~*/
 
+
+  .login-submit {
+    width: 25%;
+  }
 /*~~~~~~Trip Form~~~~~~*/
   .new-trip-form {
     @include fontSize(2rem);
