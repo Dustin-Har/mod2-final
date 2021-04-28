@@ -33,8 +33,7 @@ loginbttn.addEventListener('click', function(event) {
 });
 
 submitTripRequest.addEventListener('click', function(event) {
-  event.preventDefault();
-  getFormInfo();
+  getFormInfo(event);
 });
 
 nevermindBttn.addEventListener('click', function() {
@@ -43,7 +42,6 @@ nevermindBttn.addEventListener('click', function() {
 });
 
 submitBttn.addEventListener('click', function(event) {
-  event.preventDefault();
   calculateWantedTrip(event,findDestinationInfo(destinationInput.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value)
 });
 
@@ -134,7 +132,8 @@ function removeHidden(property) {
   property.classList.remove('hidden');
 }
 
-function getFormInfo() {
+function getFormInfo(event) {
+  event.preventDefault()
   if(destinationStart.value && destinationEnd.value && travelersSelected.value && destinationInput.value){
     addHidden(tripPriceBox);
     makePostRequest(newTraveler.id, findDestinationInfo(destinationInput.value), changeStartDateFormat(destinationStart.value), calculateTripDuration(destinationStart.value, destinationEnd.value), travelersSelected.value);
@@ -178,8 +177,9 @@ function makePostRequest(travelerId, destination, startDate, duration, travelers
   })
   .then(response => response.json())
   .then(data => {
+    console.log(data);
+    newTraveler.trips.tripsArray.push(data.newTrip);
     newTraveler.init();
-    newTraveler.trips.tripsArray.push(data);
     showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
     showYearlySpent(newTraveler);
   })
