@@ -19,4 +19,4 @@ when you get into the app the user name is ``traveler`` + a number between ``0 -
 
 
 #GIF
-* ![GIF demonstrating how to restart](https://media.giphy.com/media/DqtQZHY7fySRBzUVYo/source.mov)
+* ![GIF demonstrating how to restart](https://media.giphy.com/media/DqtQZHY7fySRBzUVYo/giphy.gif)
