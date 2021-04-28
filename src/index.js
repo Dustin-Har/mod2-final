@@ -127,7 +127,6 @@ function calculateWantedTrip (event, destination, duration, travelers) {
 }
 
 function addHidden( property) {
-  console.log('made it');
   property.classList.add('hidden');
 }
 
@@ -178,6 +177,9 @@ function makePostRequest(travelerId, destination, startDate, duration, travelers
     }
   })
   .then(response => response.json())
+  .then(data => {
+    newTraveler.trips.tripsArray.push(data);
+  })
   .catch(err => err.message);
   showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
   showYearlySpent(newTraveler);
