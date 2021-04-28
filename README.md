@@ -10,3 +10,9 @@ clone down this repo for the data. then you will want to clone down this repo ht
 
 
 when you get into the app the user name is ``traveler`` + a number between ``0 -50`` and the password is travel2020 for all users.
+
+
+# Future implemtations
+
+* select time when to leave
+* add options to userface
