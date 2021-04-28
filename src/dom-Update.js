@@ -46,7 +46,6 @@ showTrips = (travelerTrips, traveler) => {
   })
 }
 
-
 showMessage = (travelerTrips) => {
   flightsBox.innerHTML = "";
   flightsBox.innerHTML = `

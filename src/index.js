@@ -27,7 +27,6 @@ const submitTripRequest = document.getElementById('okayBttn');
 const nevermindBttn = document.getElementById('nevermindBttn');
 const tripPriceBox = document.getElementById('tripPriceBox');
 
-
 loginbttn.addEventListener('click', function(event) {
   event.preventDefault();
   login();
@@ -51,21 +50,21 @@ submitBttn.addEventListener('click', function(event) {
 upcomingBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
 }); 
+
 pendingBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getPendingTrips(), pendingBttn, newTraveler);
 }); 
+
 pastBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getPastTrips(), pastBttn, newTraveler);
 }); 
+
 presentBttn.addEventListener('click', function() {
   showTripStatus(newTraveler.getCurrentTrips(), presentBttn, newTraveler);
 }); 
 
 
 let newTraveler, wantedTripPrice;
-
-// window.addEventListener('load', onStartup);
-
 
 function login() {
   if(username.value.split("traveler")[0] === "" && password.value === 'travel2020' && (Number(username.value.split("traveler")[1]) <= 50)) {
@@ -76,7 +75,6 @@ function login() {
     loginError.innerText = 'Invalid Username or Password';
   }
 }
-
 
 function onStartup(id) {
   setMinDate();
@@ -91,8 +89,6 @@ function onStartup(id) {
   })
   .catch(err => err.message);
 }
-
-
 
 function revealMainPage() {
   displayName.classList.remove('hidden');
@@ -182,9 +178,9 @@ function makePostRequest(travelerId, destination, startDate, duration, travelers
     }
   })
   .then(response => response.json())
+  .catch(err => err.message);
   showTripStatus(newTraveler.getUpcomingTrips(), upcomingBttn, newTraveler);
   showYearlySpent(newTraveler);
-
 }
 
 
