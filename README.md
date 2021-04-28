@@ -16,3 +16,7 @@ when you get into the app the user name is ``traveler`` + a number between ``0 -
 
 * select time when to leave
 * add options to userface
+
+
+#GIF
+* ![GIF demonstrating how to restart](https://media.giphy.com/media/DqtQZHY7fySRBzUVYo/source.mov)
